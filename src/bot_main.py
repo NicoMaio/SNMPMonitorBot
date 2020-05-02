@@ -4,10 +4,30 @@
 from telepot import *
 from ops import *
 
-from threading import Thread
+from threading import *
 #
 # token del bot
-token = '************************'
+
+token = '1245778549:AAE19xidp5-Vy-iAGW7V5X748pjzC4hQJNc'
+
+
+class waiterCpu(Thread):
+
+    def __init__(self, *args, **kwargs):
+        super(waiterCpu, self).__init__(*args, **kwargs)
+        self._stop_event = Event()
+        self.fine = False
+
+    def run(self):
+        start_rrd_cpu(self)
+
+    def stop(self):
+        self._stop_event.set()
+
+    def stopped(self):
+        return self._stop_event.is_set()
+
+waitCpu = waiterCpu()
 
 #
 # funzione che gestisce il messaggio appena ricevuto dal bot
@@ -50,14 +70,25 @@ def on_chat_message(msg):
         elif 'get cpuusage' in txt:
             get_cpu(chat_id, bot)
 
+        elif 'start record cpu' in txt:
+            waitCpu.start()
+            bot.sendMessage(chat_id,"Starting record cpu data...")
+
+        elif 'send cpu image' in txt:
+            if not waitCpu.stopped():
+                send_image(chat_id,bot)
+            else: bot.sendMessage(chat_id,'Il waiter thread è stato stoppato')
+
+        elif 'stop record cpu' in txt:
+            waitCpu.stop()
+            bot.sendMessage(chat_id,"Ending record cpu data")
+
 
 bot = Bot(token)
 
 class listener(Thread):
     def run(self):
         bot.message_loop(on_chat_message)
-
-
 
 
 def run():
