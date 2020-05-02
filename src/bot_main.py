@@ -7,7 +7,7 @@ from ops import *
 from threading import Thread
 #
 # token del bot
-token = '***************************************'
+token = '************************'
 
 #
 # funzione che gestisce il messaggio appena ricevuto dal bot

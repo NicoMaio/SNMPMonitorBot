@@ -7,12 +7,7 @@ community = "public"
 version = 1
 
 def saluta(chat_id,name,bot):
-    if name == 'Tony':
-        bot.sendMessage(chat_id, 'Tony gay')
-    elif name == 'Frank':
-        bot.sendMessage(chat_id, 'prolisso, fangoso, repubblicano, pastore alpino, pipitula zitto!')
-    else:
-        bot.sendMessage(chat_id, 'ciao %s, sono un bot in fase primordiale' % name)
+    bot.sendMessage(chat_id, 'ciao %s, sono un bot in fase primordiale' % name)
 
 def send_helper(chat_id,bot):
     bot.sendMessage(chat_id,
