@@ -8,7 +8,7 @@ from threading import *
 #
 # token del bot
 
-token = '1245778549:AAE19xidp5-Vy-iAGW7V5X748pjzC4hQJNc'
+token = '******************************'
 
 
 class waiterCpu(Thread):
