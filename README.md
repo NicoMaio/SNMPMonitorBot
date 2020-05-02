@@ -13,4 +13,4 @@ USAGE:
 - ./bot_main.py
 
 FROM TELEGRAM:
-- After create your telegram bot with BotFather, take the token and insert it in bot_main.py on constant: token. And then Interrogate the bot from telegram. Write /help to see the commands.
+- After create your telegram bot with BotFather, take the token and insert it in bot_main.py on constant: token. And then interrogate the bot from telegram. Write /help to see the commands.
